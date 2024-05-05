@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, UpdateView, DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 
 
@@ -19,9 +20,15 @@ class SignupView(CreateView):
     success_url = reverse_lazy('userindex')
     
     def form_valid(self, form):
+        response = super().form_valid(form)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password1']
         name = form.cleaned_data.get("username")
-        messages.success(self.request, f"註冊成功, {name} 你好! 請登入")
-        return super().form_valid(form)
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+            messages.success(self.request, f"註冊成功, {name} 你好!")
+        return response
     
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
