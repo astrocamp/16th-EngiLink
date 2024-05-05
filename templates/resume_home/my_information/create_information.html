@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>新增個人信息</h2>
+<form method="post" id="myForm" action="{% url 'resume:ProfileCreate'%}">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">提交</button>
+<a href="#" id="cancelBtn">全部取消</a>
+</form>
+
+<script>
+document.getElementById("cancelBtn").addEventListener("click", function() {
+    // 清空表單內容
+    document.getElementById("myForm").reset();
+});
+</script>
+{% endblock %}

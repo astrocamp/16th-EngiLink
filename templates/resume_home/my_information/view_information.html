@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;">我的個人信息</h1>
+<p style="text-align: center;" >點擊姓名進入編輯</p>
+<section style="display: flex; justify-content:center;">
+    {% for profile in profiles %}
+    <div style="border: 3px #060606 solid;margin-bottom: 50px;width: 500px; ">
+        <div style="border: 1px #000000 dotted;width: 500px; ">
+            姓名：<a href="{% url 'resume:ProfileUpdate' profile.pk %}">{{ profile.name }}</a>
+            <p>性別：{{ profile.gender }}</p>
+            <p>生日：{{profile.birthday}}</p>
+            <p>電子信箱：{{profile.email}}</p>
+            <p>手機：{{profile.phone_number}}</p>
+            <p>地址：{{profile.address}}</p>
+            <p>技能：{{profile.skills}}</p>
+            <p>個人網站：{{profile.website}}</p>
+            <p>工作經驗：{{profile.experience}}</p>
+            <p>Linkedin：{{profile.linkedin}}</p>
+            <p>GitHub：{{profile.github}}</p>
+        </div>
+        <!-- 教育 -->
+        <div style="border: 1px #000000 dotted;width: 500px; ">
+            <p>學校名稱：{{profile.school_name}}</p>
+            <p>專業：{{profile.major}}</p>
+            <p>學位：{{profile.degree}}</p>
+            <p>入學時間：{{profile.education_start_date}}</p>
+            <p>畢業時間：{{profile.education_end_date}}</p>
+        </div>
+        <!-- 工作 -->
+        <div style="border: 1px #000000 dotted;width: 500px; ">
+            <p>工作名稱：{{profile.company_name}}</p>
+            <p>職稱：{{profile.position}}</p>
+            <p>入職時間：{{profile.work_start_date}}</p>
+            <p>離職時間：{{profile.work_end_date}}</p>
+            <p>是否在職：{{profile.is_current}}</p>
+        </div>
+        <!-- 專案 -->
+        <div style="border: 1px #000000 dotted;width: 500px; ">
+            <p>專案名稱：{{profile.project_name}}</p>
+            <p>負責部分：{{profile.responsibility}}</p>
+            <p>技術使用：{{profile.technologies_used}}</p>
+            <p>敘述：{{profile.description}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+
+
+<div class="pagination" style="text-align: center;">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+        {% endif %}
+
+        <span class="current">
+            第 {{ page_obj.number }} 筆，共 {{ page_obj.paginator.num_pages }}筆
+        </span>
+
+        {% if not page_obj.has_previous %} 
+        <a href="?page={{ page_obj.next_page_number }}">下一頁</a>
+        {% elif not page_obj.has_next %}
+        <a href="?page={{ page_obj.previous_page_number }}">上一頁</a>
+        {% else %}
+        <a href="?page={{ page_obj.previous_page_number }}">上一頁</a>
+        <a href="?page={{ page_obj.next_page_number }}">下一頁</a>
+        {% endif %}
+    </span>
+    <br>
+    <br>
+    <a href="{% url 'resume:ProfileCreate' %}">新增個人信息</a>
+</div>
+{% endblock %}
+
+
+
+
+
+

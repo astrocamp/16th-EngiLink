@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>履歷區</h1>
+<!-- 新增完成的履歷會顯示在此區塊 -->
+<div></div>
+<!-- 建立履歷 -->
+<a href="{% url 'resume:ProfileCreate' %}">新增履歷</a>
+<!-- 查看基本資料 -->
+<a href="{% url 'resume:ProfileShow' %}">查看</a>
+{% endblock %}
