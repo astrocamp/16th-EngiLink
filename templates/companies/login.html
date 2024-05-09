@@ -1,11 +1,35 @@
 {% extends 'base.html' %} 
 {% block content %}
-  <form method="post">
-    {% csrf_token %} 
-    {{ form }}
-    <button type="submit">Log In</button>
-  </form>
-  <div>
-    <p>Don't have an account yet?<a href="{% url 'signup' %}">Sign Up</a></p>
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+  
+  <div class="total">
+    <div class="header-bar" >Log In Now!</div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %} 
+        {{ form }}
+        <div>
+          <button type="submit" class="button">Log In</button>
+        </div>
+        </form>
+        <small>
+          Don't have an account yet?<a href="{% url 'signup' %}">Sign Up</a>
+        </small>
+    </div>
   </div>
+
+  {% if form.errors %}
+  <script>    
+      document.addEventListener('DOMContentLoaded', function() {
+          Swal.fire({
+              icon: 'error',
+              title: 'Login Failed',
+              text: 'Please check your input',
+              showConfirmButton: false,
+              timer: 2000
+          });
+      });
+  </script>
+  {% endif %}
 {% endblock %}

@@ -44,7 +44,7 @@ class SignoutView(SuccessMessageMixin, auth_views.LogoutView):
     
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, "登出成功!")
-        logout(request)  
+        logout(request)
         return super().dispatch(request, *args, **kwargs)
 
 class SignupView(CreateView):
