@@ -15,7 +15,9 @@
     <button type="submit">Log In</button>
   </form>
   <div>
-    <p>Don't have an account yet? <a href="{% url 'signup' %}">Sign Up</a></p>
+    <small>
+      Don't have an account yet? <a href="{% url 'signup' %}">Sign Up</a>
+    </small>
   </div>
 {% endif %} 
 {% endblock %}
