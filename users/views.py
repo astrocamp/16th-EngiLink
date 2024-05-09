@@ -64,7 +64,7 @@ class SignupView(CreateView):
     def form_invalid(self, form):
         messages.error(self.request, "註冊失敗, 請確認輸入的訊息!")
         return self.render_to_response(self.get_context_data(form=form))
-    
+
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = "users/edit.html"
@@ -85,3 +85,4 @@ class UserProfileView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'users/profile.html'
     context_object_name = 'user'
+

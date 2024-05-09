@@ -48,6 +48,11 @@ INSTALLED_APPS = [
     "jobs",
     'resume',
     'companies',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
 ]
 
 AUTH_USER_MODEL = 'companies.Company'
@@ -60,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware"
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -79,6 +85,8 @@ TEMPLATES = [
         },
     },
 ]
+
+SITE_ID = 1
 
 WSGI_APPLICATION = "core.wsgi.application"
 
@@ -150,3 +158,21 @@ SWEETIFY_DEFAULT_ARGUMENTS = {
     'showCancelButton': True,
     'cancelButtonText': 'Cancel',
 }
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+    }
+}
+
+LOGIN_REDIRECT_URL = "/users"
+
+SOCIALACCOUNT_LOGIN_ON_GET = True

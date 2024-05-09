@@ -12,6 +12,8 @@ mysqlclient = "^2.2.4"
 python-dotenv = "^1.0.1"
 django-crispy-forms = "^2.1"
 crispy-tailwind = "^1.0.3"
+django-allauth = {extras = ["socialaccount"], version = "^0.62.1"}
+google-auth-oauthlib = "^1.2.0"
 
 [build-system]
 requires = ["poetry-core"]
