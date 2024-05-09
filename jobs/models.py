@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MinValueValidator
 
 
 class JobManager(models.Manager):
@@ -18,7 +19,7 @@ class Job(models.Model):
         verbose_name="openings",
     )
     experience = models.CharField(max_length=100)
-    salary = models.IntegerField(blank=True)
+    salary = models.IntegerField(blank=True,validators=[MinValueValidator(1)])
     address = models.CharField(max_length=250)
     description = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
