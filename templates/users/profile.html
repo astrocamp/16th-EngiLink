@@ -4,13 +4,13 @@
 {% block main %}
 
 
-<h2>User Info</h2>
-<p>Username: {{ user.username }}</p>
+<h2>個人資訊</h2>
+<p>使用者代號: {{ user.username }}</p>
 <p>Email: {{ user.email }}</p>
-<p>Firstname: {{ user.first_name }}</p>
-<p>Lastname: {{ user.last_name }}</p>
+<p>名字: {{ user.first_name }}</p>
+<p>姓氏: {{ user.last_name }}</p>
 <div>
-    <p><a href="{% url 'edit' %}">Edit</a></p>
+    <p><a href="{% url 'users_edit' %}">編輯</a></p>
 </div>
 
 

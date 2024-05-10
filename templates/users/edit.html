@@ -6,11 +6,11 @@
 <form method="post">
     {% csrf_token %}
     <fieldset>
-        <legend>User Profile</legend>
+        <legend>個人簡介</legend>
         {{ form|crispy }}
     </fieldset>
     <div>
-        <button type="submit">Confirm</button>
+        <button type="submit">確認</button>
     </div>
 </form>
 

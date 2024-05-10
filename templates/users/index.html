@@ -7,20 +7,20 @@
         <h2>{{ user.username }}</h2>
         <form action="{% url 'users_signout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Log Out</button>
-            <button><a href="{% url 'users_profile' user.id %}">User Profile</a></button>
-            <button><a href="{% url 'users_edit' %}">Edit Profile</a></button>
+            <button type="submit">登出</button>
+            <button><a href="{% url 'users_profile' user.id %}">個人設定</a></button>
+            <button><a href="{% url 'users_edit' %}">編輯</a></button>
         </form>
     {% else %}
-        <h2>Log In Now</h2>
+        <h2>立即登入!</h2>
         <form id="login-form" action="{% url 'users_signin' %}" method="post" class="mb-4">
             {% csrf_token %}
             {{ form }}
-            <button type="submit">Log In</button>
+            <button type="submit">登入</button>
         </form>
         <div>
             <small>
-                Don't have an account yet? <a href="{% url 'users_signup' %}">Sign up</a>
+                沒有帳號? <a href="{% url 'users_signup' %}">註冊</a>
             </small>
         </div>
     {% endif %}

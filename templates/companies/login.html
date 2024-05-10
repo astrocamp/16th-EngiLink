@@ -4,17 +4,17 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
   
   <div class="total">
-    <div class="header-bar" >Log In Now!</div>
+    <div class="header-bar" >立即登入!</div>
     <div class="card-body">
       <form method="post">
         {% csrf_token %} 
         {{ form }}
         <div>
-          <button type="submit" class="button">Log In</button>
+          <button type="submit" class="button">登入</button>
         </div>
         </form>
         <small>
-          Don't have an account yet?<a href="{% url 'signup' %}">Sign Up</a>
+          沒有帳號?<a href="{% url 'signup' %}">註冊</a>
         </small>
     </div>
   </div>

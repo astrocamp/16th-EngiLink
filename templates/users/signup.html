@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
 
     <div class="total">
-        <div class="header-bar" >Sign Up Now!</div>
+        <div class="header-bar" >立即註冊!</div>
         <div class="card-body">
             <form action="{% url 'users_signup' %}" method="post">
                 {% csrf_token %}
@@ -14,12 +14,12 @@
                     {{ form|crispy }}
                 </fieldset>
                 <div>
-                    <button type="submit" class="button">Sign Up</button>
+                    <button type="submit" class="button">註冊</button>
                 </div>
             </form>
             <div>
                 <small>
-                    Already Registered? <a href="{% url 'users_signin' %}">Sign In</a>
+                    已有帳號? <a href="{% url 'users_signin' %}">登入</a>
                 </small>
             </div>
         </div>

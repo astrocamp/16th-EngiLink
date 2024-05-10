@@ -1,12 +1,27 @@
 {% extends 'base.html' %} 
+{% load crispy_forms_tags %}
 {% block content %}
-  <h2>Sign up</h2>
-  <form action="{% url 'signup' %}" method="post">
-    {% csrf_token %} 
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
-  <div>
-    <p>Already Registered? <a href="{% url 'login' %}">Log In</a></p>
-  </div>
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+  <div class="total">
+    <div class="header-bar" >立即註冊!</div>
+    <div class="card-body">
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {{ form|crispy }}
+            </fieldset>
+            <div>
+                <button type="submit" class="button">註冊</button>
+            </div>
+        </form>
+        <div>
+            <small>
+              已有帳號?? <a href="{% url 'login' %}">登入</a>
+            </small>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+
