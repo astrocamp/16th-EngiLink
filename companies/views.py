@@ -36,7 +36,6 @@ class LogInView(LoginView):
     def form_invalid(self, form):
         messages.error(self.request, "登入失敗, 請確認輸入的訊息!")
         return self.render_to_response(self.get_context_data(form=form))
-
 class IndexView(TemplateView):
     template_name = "companies/index.html"
 
