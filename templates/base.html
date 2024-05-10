@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="{% static 'outfile/out.js' %}" type="module"></script>
@@ -11,7 +11,6 @@
   </head>
   <body>
     {% block content %}{% endblock %}
-
     {% if messages %}    
         {% for message in messages %}
             <script>
@@ -25,4 +24,5 @@
         {% endfor %} 
     {% endif %}
   </body>
+</head>
 </html>
