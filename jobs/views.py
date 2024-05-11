@@ -45,6 +45,7 @@ class EditView(UpdateView):
 
     def form_invalid(self, form):
         messages.error(self.request, "修改失敗, 請確認輸入的欄位!")
+        return self.render_to_response(self.get_context_data(form=form))
 
 class JobDeleteView(DeleteView):
     model = Job
