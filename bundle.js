@@ -3065,8 +3065,66 @@
     }
   });
 
-  // static/scripts/app.js
+  // static/scripts/drag_drop.js
+  var draggables = document.querySelectorAll(".task");
+  var droppables = document.querySelectorAll(".swim-lane");
+  draggables.forEach((task) => {
+    task.addEventListener("dragstart", () => {
+      task.classList.add("is-dragging");
+    });
+    task.addEventListener("dragend", () => {
+      task.classList.remove("is-dragging");
+    });
+  });
+  droppables.forEach((zone) => {
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      const bottomTask = insertAboveTask(zone, e.clientY);
+      const curTask = document.querySelector(".is-dragging");
+      if (!bottomTask) {
+        zone.appendChild(curTask);
+      } else {
+        zone.insertBefore(curTask, bottomTask);
+      }
+    });
+  });
+  var insertAboveTask = (zone, mouseY) => {
+    const els = zone.querySelectorAll(".task:not(.is-dragging)");
+    let closestTask = null;
+    let closestOffset = Number.NEGATIVE_INFINITY;
+    els.forEach((task) => {
+      const { top } = task.getBoundingClientRect();
+      const offset = mouseY - top;
+      if (offset < 0 && offset > closestOffset) {
+        closestOffset = offset;
+        closestTask = task;
+      }
+    });
+    return closestTask;
+  };
+
+  // static/scripts/sweetalert.js
   var import_sweetalert2 = __toESM(require_sweetalert2_all());
+  var Toast = import_sweetalert2.default.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2e3,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = import_sweetalert2.default.stopTimer;
+      toast.onmouseleave = import_sweetalert2.default.resumeTimer;
+    },
+    html: `
+        <button id="close-toast" class="swal2-close w-0 h-0" style="display: block; background-color: transparent; border: none; position: absolute; top: 0; right: 0;">&#x2715;</button>
+    `,
+    didRender: (toast) => {
+      const closeButton = toast.querySelector("#close-toast");
+      closeButton.addEventListener("click", () => {
+        import_sweetalert2.default.close();
+      });
+    }
+  });
   window.Swal = import_sweetalert2.default;
 })();
 /*! Bundled license information:
