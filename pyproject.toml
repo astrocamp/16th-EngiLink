@@ -12,6 +12,7 @@ mysqlclient = "^2.2.4"
 python-dotenv = "^1.0.1"
 django-crispy-forms = "^2.1"
 crispy-tailwind = "^1.0.3"
+rich = "^13.7.1"
 
 [build-system]
 requires = ["poetry-core"]
