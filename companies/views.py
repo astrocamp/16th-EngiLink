@@ -9,9 +9,32 @@ from django.urls import reverse_lazy
 from .forms import CompanyRegisterForm, CompanyUpdateForm
 from users.models import CustomUser
 
+<<<<<<< HEAD
 class CompanyRegisterView(FormView):
     template_name = 'companies/register.html'
     form_class = CompanyRegisterForm
+=======
+class LogOutView(LogoutView):
+    template_name = "companies/logout.html"
+
+
+class LogInView(LoginView):
+    template_name = "companies/login.html"
+
+    def get_success_url(self):
+        url = self.get_redirect_url()
+        return reverse("companies:index") 
+
+class IndexView(TemplateView):
+    template_name = "companies/index.html"
+    context_object_name = 'user'
+
+
+class SignUpView(CreateView):
+    form_class = CompanyUserCreationForm
+    model = Company
+    template_name = "companies/signup.html"
+>>>>>>> 2f0f28b (hotfix: tailwind)
     success_url = "/companies/"
 
     def form_valid(self, form):
