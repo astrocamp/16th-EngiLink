@@ -4,13 +4,12 @@
     {% for job in jobs %}
         <div>
             <a href="{% url 'jobs:show' job.id %}">{{ job.title }}</a>
-            <form>
+            <form action="{% url 'jobs:setpublish' job.id %}" method="post">
                 {% csrf_token %}
-                <button hx-post="{% url 'jobs:setpublish' job.id %}"
-                hx-swap="outerHTML">
+                <button type="submit" class="btn btn-sm {{ book.is_published|yesno:'bg-blue-800 text-white,bg-blue-200' }}">
                     {{ job.is_published | yesno:"刊登中,已下架" }}
                 </button>
-            </form>
+            </form> 
         </div>
     {% endfor %}
     <button><a href="{% url 'companies:home' %}">會員系統</a></button>
