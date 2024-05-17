@@ -10,8 +10,8 @@
         </div>
         <h1 class="text-2xl font-bold mb-6">履歷預覽</h1>
 
-        <h2 class="text-lg">個人資料</h2>
-        <ul class="pl-5">
+        <h2 class="text-lg">個人資訊</h2>
+        <ul class="pl-5" id="personal-info">
             {% for resume in total_data.resume_data %}
                 {% if resume.picture %}
                     <p><img src="{{ resume.picture.url }}" alt="照片" class="w-40 h-32 mr-6"></p>
@@ -34,7 +34,7 @@
         <hr>
 
         <h2 class="text-lg">教育經驗</h2>
-        <ul class="pl-5">
+        <ul class="pl-5" id="education-experience">
             {% for education in total_data.education_data %}
                 <li>{{ education.school_name }}-{{education.major}}</li>
                 <p>{{ education.get_degree_display }}</p>
@@ -44,7 +44,7 @@
         <hr>
 
         <h2 class="text-lg">工作經驗</h2>
-        <ul class="pl-5">
+        <ul class="pl-5" id="work-experience">
             {% for work in total_data.work_data %}
                 <li>{{ work.company_name }}-{{work.position}}</li>
                 <p>{{ work.start_date}}-{{ work.end_date}}</p>
@@ -53,7 +53,7 @@
         <hr>
 
         <h2 class="text-lg">專案經驗</h2>
-        <ul class="pl-5">
+        <ul class="pl-5" id="project-experience">
             {% for project in total_data.project_data %}
                 <li>{{ project.project_name }}</li>
                 <p>{{ project.responsibility }}</p>
