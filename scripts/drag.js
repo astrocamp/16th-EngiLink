@@ -7,28 +7,60 @@ document.addEventListener('DOMContentLoaded', () => {
         draggable: 'p',
     });
     sortable.on('drag:start', (evt) => {
-        // console.log('START')
-        // console.log(evt)
         evt.data.source.classList.add('draggable--is-dragging');
     });
 
     sortable.on('drag:stop', (evt) => {
-        console.log('STOP')
-        console.log(evt)
         evt.data.source.classList.remove('draggable--is-dragging');
     });
 
     sortable.on('sortable:sort', (evt) => {
-        // console.log('SORT')
-        // console.log(evt)
         evt.data.dragEvent.source.classList.add('draggable--is-over');
     });
 
     sortable.on('sortable:sorted', (evt) => {
-        console.log('SORTED')
-        console.log(evt)
         evt.data.dragEvent.source.classList.remove('draggable--is-over');
+        updateLocalStorage()
     });
     }
-);
+)
+
+
+
+
+
+function updateLocalStorage(){
+    const lists = document.querySelectorAll("ul")
+    lists.forEach(list => {
+        const id = list.id
+        const childrenArray = Array.from(list.children)
+        const items = Array.from(list.children).map(p => p.outerHTML)
+        if (id && items.length > 0) {
+            localStorage.setItem(id, JSON.stringify(items))
+        }
+        let storedItems = JSON.parse(localStorage.getItem(id)) || [];
+        storedItems = storedItems.filter(item => !item.includes('draggable-mirror'))
+
+        if (id && storedItems.length > 0) {
+            localStorage.setItem(id, JSON.stringify(storedItems))
+        }
+    })
+
+}
+
+function populateList(items, itemsList){
+    if (items.length > 0){
+        itemsList.innerHTML = items.join('')
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", () =>{
+    const lists = document.querySelectorAll("ul")
+    lists.forEach(list => {
+        const id = list.id
+        const storedItems = JSON.parse(localStorage.getItem(id)) || []
+        populateList(storedItems, list)
+    })
+})
 
