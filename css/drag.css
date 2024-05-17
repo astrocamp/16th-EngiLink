@@ -1,6 +1,6 @@
-.draggable--is-dragging {
+/* .draggable--is-dragging {
     border: solid gray;
-}
+} */
 
 .draggable--is-over {
     background-color: #f0f0f0;
