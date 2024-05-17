@@ -27,8 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
 function updateLocalStorage(){
     const lists = document.querySelectorAll("ul")
     lists.forEach(list => {
