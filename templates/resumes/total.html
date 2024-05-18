@@ -36,9 +36,11 @@
         <h2 class="text-lg">教育經驗</h2>
         <ul class="pl-5" id="education-experience">
             {% for education in total_data.education_data %}
-                <li>{{ education.school_name }}-{{education.major}}</li>
-                <p>{{ education.get_degree_display }}</p>
-                <p>{{ education.start_date}}-{{ education.end_date}}</p>
+                <li data-id="{{ education.id }}">
+                    <p>{{ education.school_name }}-{{education.major}}</p>
+                    <p>{{ education.get_degree_display }}</p>
+                    <p>{{ education.start_date}}-{{ education.end_date}}</p>
+                </li>
             {% endfor %}
         </ul>
         <hr>
@@ -46,8 +48,10 @@
         <h2 class="text-lg">工作經驗</h2>
         <ul class="pl-5" id="work-experience">
             {% for work in total_data.work_data %}
-                <li>{{ work.company_name }}-{{work.position}}</li>
+            <li data-id="{{ work.id }}">
+                <p>{{ work.company_name }}-{{work.position}}</p>    
                 <p>{{ work.start_date}}-{{ work.end_date}}</p>
+            </li>
             {% endfor %}
         </ul>
         <hr>
@@ -55,15 +59,17 @@
         <h2 class="text-lg">專案經驗</h2>
         <ul class="pl-5" id="project-experience">
             {% for project in total_data.project_data %}
-                <li>{{ project.project_name }}</li>
-                <p>{{ project.responsibility }}</p>
-                <p>{{ project.technologies_used}}</p>
-                <p>{{project.description}}</p>
+                <li data-id="{{ project.id }}">
+                    <p>{{ project.project_name }}</p>
+                    <p>{{ project.responsibility }}</p>
+                    <p>{{ project.technologies_used}}</p>
+                    <p>{{project.description}}</p>
+                </li>
             {% endfor %}
         </ul>
         <hr>
     </div>
-    
+
 {% endblock %}
 
 
