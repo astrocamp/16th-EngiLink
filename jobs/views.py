@@ -5,12 +5,9 @@ from django.shortcuts import redirect,HttpResponse,render
 from .models import Job
 from .forms import JobForm
 from django.urls import reverse
-<<<<<<< HEAD
 from companies.models import Company
 from django.shortcuts import get_object_or_404
-=======
 from django.contrib.auth.mixins import PermissionRequiredMixin
->>>>>>> ed863e4 (feat:add permission management)
 
 
 class IndexView(PermissionRequiredMixin,ListView):
