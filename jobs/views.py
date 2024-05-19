@@ -5,15 +5,19 @@ from django.shortcuts import redirect,HttpResponse,render
 from .models import Job
 from .forms import JobForm
 from django.urls import reverse
+<<<<<<< HEAD
 from companies.models import Company
 from django.shortcuts import get_object_or_404
+=======
+from django.contrib.auth.mixins import PermissionRequiredMixin
+>>>>>>> ed863e4 (feat:add permission management)
 
 
-class IndexView(ListView):
+class IndexView(PermissionRequiredMixin,ListView):
     template_name = "jobs/index.html"
     model = Job
     context_object_name = "jobs"
-
+    permission_required = "jobs.show_job"
 
 class AddView(CreateView):
     template_name = "jobs/create.html"

@@ -10,11 +10,12 @@ from works.models import Work
 from projects.models import Project
 from weasyprint import HTML, CSS
 from django.template.loader import render_to_string
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
-
-class ResumeArea(TemplateView):
+class ResumeArea(PermissionRequiredMixin,TemplateView):
     template_name = 'resumes/area.html'
+    permission_required = "resumes.show_job"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
