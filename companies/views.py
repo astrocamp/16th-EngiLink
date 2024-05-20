@@ -73,7 +73,7 @@ class CompanyPasswordChangeView(PasswordChangeView):
         logout(self.request)
         return response
     
-def company_list(request):
+def CompanyListView(request):
     companies = Company.objects.all()
     paginator = Paginator(companies, 15)
     page_number = request.GET.get('page')

@@ -7,7 +7,7 @@ from .views import (
     CompanyUpdateView,
     CompanyRegisterView, 
     CompanyPasswordChangeView,
-    company_list,
+    CompanyListView
 )
 from jobs import views as jobs
 
@@ -23,6 +23,6 @@ urlpatterns = [
     path('<int:pk>/jobs/', jobs.IndexView.as_view(), name="jobs"),
     path('<int:pk>/create/', jobs.AddView.as_view(), name="jobs_create"),
     path("<int:pk>/", CompanyDetailView.as_view(), name="detail"),
-    path('list/', company_list, name='company_list'),
+    path('list/', CompanyListView, name='company_list'),
 ]
 
