@@ -29,6 +29,7 @@ class CompanyRegisterView(FormView):
         backend = get_user_backend(user)
         login(self.request, user,backend=backend.__module__ + '.' + backend.__class__.__name__)
         return super(CompanyRegisterView, self).form_valid(form)
+
     
     def get_success_url(self):
         user = self.request.user
@@ -40,7 +41,7 @@ class CompanyRegisterView(FormView):
         else:
             return reverse_lazy('companies:home')
 
-class CompanyHomeView(TemplateView):
+class CompanyHomeView(PermissionRequiredMixin,TemplateView):
     template_name = 'companies/home.html'
     permission_required = "companies.home_company"
 
