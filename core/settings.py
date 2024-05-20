@@ -70,6 +70,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -188,7 +189,7 @@ SWEETIFY_DEFAULT_ARGUMENTS = {
 }
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage','whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AMAZON_CREDENTIAL = {
     'ACCESS_KEY_ID' : os.getenv("ACCESS_KEY_ID"),
@@ -236,3 +237,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+ALLOWED_HOSTS = [
+    'engilink-9b61bc3f7716.herokuapp.com/'
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
