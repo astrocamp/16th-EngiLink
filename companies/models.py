@@ -9,6 +9,12 @@ class Company(models.Model):
     user_name = models.CharField(max_length=100,default='')
     tel = models.CharField(max_length=11,default='')
     custom_user = models.OneToOneField(CustomUser,on_delete=models.CASCADE,null=True)
+    card_banner = models.ImageField(upload_to='banners/', null=True, blank=True)
+    card_logo = models.ImageField(upload_to='logos/', null=True, blank=True)
+    card_description = models.TextField(default='')
+    card_area = models.CharField(max_length=50, default='')
+    card_type = models.CharField(max_length=50, default='')
+    tags = models.CharField(max_length=255, default='')
 
     # def clean(self):
     #     if not re.match(r'^[\u4e00-\u9fa5]{5,}$', self.company_name):
@@ -44,3 +50,6 @@ class Company(models.Model):
     def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.company_name

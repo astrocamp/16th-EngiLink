@@ -6,6 +6,8 @@ from django.views.generic.edit import FormView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404
 from .forms import CompanyRegisterForm, CompanyUpdateForm
 from users.models import CustomUser
 from .models import Company
@@ -70,3 +72,10 @@ class CompanyPasswordChangeView(PasswordChangeView):
         response = super().form_valid(form)
         logout(self.request)
         return response
+    
+def company_list(request):
+    companies = Company.objects.all()
+    paginator = Paginator(companies, 15)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'companies/list.html', {'page_obj': page_obj})
