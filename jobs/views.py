@@ -35,7 +35,6 @@ class AddView(CreateView):
     def form_valid(self, form):
         company_id = self.request.user.company.id
         form.instance.company = get_object_or_404(Company, pk=company_id)
-        print(f'Creating job for company: {form.instance.company}')
         self.success_url = reverse('companies:jobs', kwargs={'pk': company_id})
         return super().form_valid(form)
 
