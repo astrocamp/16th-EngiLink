@@ -1,7 +1,6 @@
 from django.db import models
-from django.core.exceptions import ValidationError
 from users.models import CustomUser
-import re
+
 
 class Company(models.Model):
     company_name = models.CharField(max_length=100,default='')
