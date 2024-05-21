@@ -8,6 +8,7 @@ from .views import (
     UserRegisterView, 
     UserPasswordChangeView,
     ImportDataView,
+    ApplyForJobView
 )
 from resumes import views as resumes
 
@@ -23,4 +24,5 @@ urlpatterns = [
     path("<pk>/resumes/", resumes.ResumeArea.as_view(), name="resumes"),
     path("<int:pk>/", UserDetailView.as_view(), name="detail"),
     path('import_data/', ImportDataView.as_view(), name='import_data'),
+    path('apply/', ApplyForJobView.as_view(), name='apply_for_job'),
 ]

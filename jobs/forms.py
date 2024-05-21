@@ -1,6 +1,8 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Job
+from .models import Job_Resume
+from resumes.models import Resume
 
 
 class JobForm(ModelForm):
@@ -20,3 +22,14 @@ class JobForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
+
+class JobResumeForm(forms.ModelForm):
+    class Meta:
+        model = Job_Resume
+        fields = ['job', 'resume']
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+        self.fields['resume'].queryset = Resume.objects.filter(user=user)
+        self.fields['job'].queryset = Job.objects.filter(company__custom_user__user_type=2)

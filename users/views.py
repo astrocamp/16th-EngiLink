@@ -16,6 +16,8 @@ import pandas as pd
 from django.views import View
 from django.http import HttpResponse
 from companies.models import Company
+from jobs.forms import JobResumeForm
+from django.views.generic import CreateView
 
 
 class UserRegisterView(FormView):
@@ -101,3 +103,20 @@ class ImportDataView(View):
                 tin=tin,
             )  
         return HttpResponse("資料已成功導入到資料庫")
+    
+
+
+class ApplyForJobView(CreateView):
+    template_name = 'applications/apply.html'
+    form_class = JobResumeForm
+    success_url = reverse_lazy('users:home')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+    def form_valid(self, form):
+        job_resume = form.save(commit=False)
+        job_resume.save()
+        return super().form_valid(form)

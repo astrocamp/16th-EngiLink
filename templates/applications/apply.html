@@ -1,0 +1,9 @@
+{% extends 'frontend.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">應徵</button>
+</form>
+{% endblock %}
