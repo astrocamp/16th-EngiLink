@@ -10,7 +10,8 @@ from .forms import CompanyRegisterForm, CompanyUpdateForm
 from users.models import CustomUser
 from .models import Company
 from django.contrib.auth.mixins import PermissionRequiredMixin
-
+from jobs.models import Job_Resume
+from django.views.generic import ListView
 
 def get_user_backend(user):
     for backend in get_backends():
@@ -83,3 +84,11 @@ class CompanyPasswordChangeView(PasswordChangeView):
         response = super().form_valid(form)
         logout(self.request)
         return response
+
+class JobApplicationsView(ListView):
+    model = Job_Resume
+    template_name = 'companies/apply.html'
+    
+    def get_queryset(self):
+        company = Company.objects.get(custom_user=self.request.user)
+        return Job_Resume.objects.filter(job__company=company)

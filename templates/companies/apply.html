@@ -1,0 +1,17 @@
+{% extends 'backend.html' %}
+{% block content %}
+<h1>應徵記錄</h1>
+<ul>
+    {% for job_resume in object_list %}
+        <div class="bg-white p-4 shadow rounded-lg">
+            <li>
+                <strong>應徵者:</strong> {{ job_resume.resume.user.username }}<br>
+                <strong>職缺:</strong> <a href="{% url 'companies:jobs' user.company.id %}">{{ job_resume.job.title }}</a><br>
+                <strong>技能:</strong> {{ job_resume.resume.skills }}<br>
+                <strong>工作經驗:</strong> {{ job_resume.resume.experience }}
+            </li>
+            <button type="submit" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">查看應徵</button>
+        </div>
+
+    {% endfor %}
+{% endblock %}
