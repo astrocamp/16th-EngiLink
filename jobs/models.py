@@ -4,8 +4,9 @@ from resumes.models import Resume
 from django.core.validators import MinValueValidator,MaxValueValidator
 from django.core.exceptions import ValidationError
 from companies.models import Company
+from users.models import CustomUser
 import re
-from companies.models import Company
+
 
 class JobManager(models.Manager):
     def get_queryset(self):
@@ -51,4 +52,10 @@ class Job(models.Model):
 class Job_Resume(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Job_User(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE,default='')
     created_at = models.DateTimeField(auto_now_add=True)

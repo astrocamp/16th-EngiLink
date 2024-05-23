@@ -10,7 +10,7 @@
     </form>
     <br>
     <a href="{% url 'companies:jobs' user.company.id %}">職缺刊登</a>
-    <a href="{% url 'companies:applications' user.company.id %}">收到應徵</a>
+    <a href="{% url 'companies:applications' user.company.id %}" class="inline-block border border-black px-4 py-2 rounded">收到應徵</a>
 {% else %}
     <h1>Welcome to Our Site!</h1>
     <p>Please <a href="{% url 'companies:login' %}">login</a> or <a href="{% url 'companies:register' %}">register</a>.</p>

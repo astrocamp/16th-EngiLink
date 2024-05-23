@@ -15,7 +15,7 @@ from django.views.generic.list import ListView
 from .models import CustomUser
 from resumes.models import Resume
 from companies.models import Company
-from jobs.models import Job,Job_Resume
+from jobs.models import Job,Job_Resume,Job_User
 
 
 
@@ -107,13 +107,13 @@ class ApplyForJobCreateView(View):
     def post(self, request, *args, **kwargs):
         job_id = request.POST.get('job_id')
         resume_id = request.POST.get('resume_id')
+        user_id = request.user.id
 
-        Job_Resume.objects.create(job_id=job_id, resume_id=resume_id)
+        Job_User.objects.create(job_id=job_id, user_id=user_id,resume_id=resume_id)
         return redirect('users:home')
 
 class ApplyForJobListView(ListView):
-    model = Job_Resume
+    model = Job_User
     template_name = 'users/apply.html'
     def get_queryset(self):
-        user = self.request.user.id
-        return Job_Resume.objects.filter(job__resumes=user)
+        return Job_User.objects.filter(user=self.request.user)
