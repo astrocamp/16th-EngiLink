@@ -4,17 +4,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from django.conf import settings
+from django.urls import reverse_lazy
+from .forms import UserRegisterForm, UserUpdateForm
 from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy
-from .forms import UserRegisterForm, UserUpdateForm
+from django.views.generic.list import ListView
 from .models import CustomUser
 from resumes.models import Resume
 from companies.models import Company
 from jobs.models import Job,Job_Resume
+
+
 
 class UserRegisterView(FormView):
     template_name = 'users/register.html'
@@ -100,10 +103,17 @@ class UserPasswordChangeView(PasswordChangeView):
         logout(self.request)
         return response
     
-class ApplyForJobView(View):
+class ApplyForJobCreateView(View):
     def post(self, request, *args, **kwargs):
         job_id = request.POST.get('job_id')
         resume_id = request.POST.get('resume_id')
 
         Job_Resume.objects.create(job_id=job_id, resume_id=resume_id)
         return redirect('users:home')
+
+class ApplyForJobListView(ListView):
+    model = Job_Resume
+    template_name = 'users/apply.html'
+    def get_queryset(self):
+        user = self.request.user.id
+        return Job_Resume.objects.filter(job__resumes=user)

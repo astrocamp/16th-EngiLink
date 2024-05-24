@@ -9,6 +9,7 @@
         <button type="submit">Logout</button>
     </form>
     <br>
+    <h1><a href="{% url 'users:applications' %}">我的應徵紀錄</a></h1>
     <hr>
     <form action="{% url 'users:home' %}" method="get" class="mb-4">
         <input type="text" name="q" placeholder="搜尋公司名稱" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500">
