@@ -15,7 +15,7 @@ from django.views.generic.list import ListView
 from .models import CustomUser
 from resumes.models import Resume
 from companies.models import Company
-from jobs.models import Job,Job_Resume,Job_User
+from jobs.models import Job,Job_User
 
 
 
@@ -106,10 +106,9 @@ class UserPasswordChangeView(PasswordChangeView):
 class ApplyForJobCreateView(View):
     def post(self, request, *args, **kwargs):
         job_id = request.POST.get('job_id')
-        resume_id = request.POST.get('resume_id')
         user_id = request.user.id
 
-        Job_User.objects.create(job_id=job_id, user_id=user_id,resume_id=resume_id)
+        Job_User.objects.create(job_id=job_id, user_id=user_id)
         return redirect('users:home')
 
 class ApplyForJobListView(ListView):

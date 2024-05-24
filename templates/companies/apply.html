@@ -7,8 +7,6 @@
             <li>
                 <strong>應徵者:</strong> {{ job_user.user.username }}<br>
                 <strong>職缺:</strong> <a href="{% url 'companies:jobs' user.company.id %}">{{ job_user.job.title }}</a><br>
-                <strong>技能:</strong> {{ job_user.resume.skills }}<br>
-                <strong>工作經驗:</strong> {{ job_user.resume.experience }}<br>
                 <strong>應徵時間:</strong> {{ job_user.created_at |date:"Y.m.d H:i" }}<br>
                 <br>
                 <a href=""class="px-4 py-2 bg-indigo-500 text-white rounded-lg ml-2">查看</a>

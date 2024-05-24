@@ -1,6 +1,6 @@
 from .models import Job
 from django import forms
-from .models import Job,Job_Resume
+from .models import Job
 
 
 class JobForm(forms.ModelForm):
@@ -21,7 +21,3 @@ class JobForm(forms.ModelForm):
         self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
 
-class JobResumeForm(forms.ModelForm):
-    class Meta:
-        model = Job_Resume
-        fields = ['job', 'resume']
