@@ -17,4 +17,130 @@
             <img src="{% static 'img/engilink.png' %}" class="w-full lg:max-w-lg">
         </div>
     </div>
+    
+    <div class="overflow-hidden bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto flex max-w-2xl flex-col lg:flex-row gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none">
+                <div class="lg:pr-8 lg:pt-4">
+                    <div class="lg:max-w-lg text-center lg:text-left">
+                        <h2 class="text-base font-semibold leading-7" style="color: #0C4195;">EngiLink求職工具</h2>
+                        <p class="mt-2 text-3xl font-bold tracking-tight text-blue-800 sm:text-4xl">您的最佳求職工具</p>
+                        <p class="mt-8 text-lg leading-8 text-gray-600">EngiLink 專注打造最完美的求職工具，幫助求職者呈現最好的一面，並建立專業個人品牌。</p>
+                        <div class="lg:max-w-lg text-center lg:text-left">
+                            <p class="text-lg leading-8 text-gray-600">線上履歷 · 輕鬆客製化</p>
+                            <h2 class="mt-2 text-base leading-7">只需要短短幾分鐘，就能製作一份精美的線上履歷，呈現您的能力和職涯經歷，幫助您獲得面試機會！</h2>
+                        </div>
+                        <div class="relative pl-9">
+                            <dt class="inline font-semibold text-gray-900">
+                                <button class="bg-blue-800 text-white px-8 py-4 rounded-full mt-8 mr-4 hover:bg-blue-200 hover:text-black" onclick="location.href='{% url 'users:register' %}'">立即註冊</button>
+                            </dt>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:pl-8 lg:pt-4 flex items-center justify-center">
+                    <img src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overflow-hidden bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto flex max-w-2xl flex-col lg:flex-row gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none">
+                <div class="lg:pl-8 lg:pt-4 flex items-center justify-center order-last lg:order-first">
+                    <img src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
+                </div>
+                <div class="lg:pr-8 lg:pt-4">
+                    <div class="lg:max-w-lg text-center lg:text-left">
+                        <div class="lg:max-w-lg text-center lg:text-left">
+                            <p class="text-lg leading-8 text-gray-600">一鍵匯入 · 輕鬆搬家</p>
+                            <h2 class="mt-2 text-base leading-7">簡化您的求職流程！「一鍵匯入履歷」，讓您可以輕鬆地從其他平台快速匯入您的履歷。無需手動填寫繁瑣的資料，幾秒鐘內完成設定，立即開始您的求職之旅！</h2>
+                        </div>
+                        <div class="relative pl-9">
+                            <dt class="inline font-semibold text-gray-900">
+                                <button class="bg-blue-800 text-white px-8 py-4 rounded-full mt-8 mr-4 hover:bg-blue-200 hover:text-black" onclick="location.href='{% url 'users:register' %}'">立即註冊</button>
+                            </dt>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lg:container lg:mx-auto lg:py-16 md:py-12 md:px-6 py-12 px-4">
+        <h1 class="text-center mb-4 text-blue-800 lg:text-4xl text-3xl lg:leading-9 leading-7 font-semibold">常見問題</h1>
+    
+        <div class="lg:w-8/12 w-full mx-auto">
+            <div class="w-full md:px-6 mb-6">
+                <div id="mainHeading" class="flex justify-between items-center w-full bg-white shadow-md p-4 rounded-lg cursor-pointer hover:text-blue-600" data-menu>
+                    <div class="">
+                        <p class="flex justify-center items-center dark:text-white font-medium text-base leading-6 md:leading-4 text-gray-800"><span class="lg:mr-6 mr-4 dark:text-white lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">Q1.</span> 爲何我該選擇EngiLink?</p>
+                    </div>
+                    <button aria-label="toggler" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+                        <img class="transform dark:hidden " src="https://tuk-cdn.s3.amazonaws.com/can-uploader/faq-8-svg2.svg" alt="toggler">
+                        <img class="transform dark:block hidden " src="https://tuk-cdn.s3.amazonaws.com/can-uploader/faq-8-svg2dark.svg" alt="toggler">
+                    </button>
+                </div>
+                <div id="menu" class="hidden mt-4 p-4 bg-gray-100 rounded-lg">
+                    <li class="text-base leading-6 text-gray-600 dark:text-gray-300 font-normal">168。</li>
+                </div>
+            </div>
+    
+            <div class="w-full md:px-6 mb-6">
+                <div id="mainHeading" class="flex justify-between items-center w-full bg-white shadow-md p-4 rounded-lg cursor-pointer hover:text-blue-600" data-menu>
+                    <div class="">
+                        <p class="flex justify-center items-center dark:text-white font-medium text-base leading-6 lg:leading-4 text-gray-800"><span class="lg:mr-6 dark:text-white mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">Q2.</span> EngiLink是免費的嗎?</p>
+                    </div>
+                    <button aria-label="toggler" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+                        <img class="transform dark:hidden " src="https://tuk-cdn.s3.amazonaws.com/can-uploader/faq-8-svg2.svg" alt="toggler">
+                        <img class="transform dark:block hidden " src="https://tuk-cdn.s3.amazonaws.com/can-uploader/faq-8-svg2dark.svg" alt="toggler">
+                    </button>
+                </div>
+                <div id="menu" class="hidden mt-4 p-4 bg-gray-100 rounded-lg">
+                    <p class="text-base leading-6 text-gray-600 dark:text-gray-300 font-normal">是。</p>
+                </div>
+            </div>
+    
+            <div class="w-full md:px-6 mb-6">
+                <div id="mainHeading" class="flex justify-between items-center w-full bg-white shadow-md p-4 rounded-lg cursor-pointer hover:text-blue-600" data-menu>
+                    <div class="">
+                        <p class="flex justify-center items-center dark:text-white font-medium text-base leading-6 lg:leading-4 text-gray-800"><span class="lg:mr-6 dark:text-white mr-4 lg:text-2xl md:text-xl text-lg leading-6 md:leading-5 lg:leading-4 font-semibold text-gray-800">Q3.</span> 可以免費下載履歷PDF嗎?</p>
+                    </div>
+                    <button aria-label="toggler" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+                        <img class="transform dark:hidden " src="https://tuk-cdn.s3.amazonaws.com/can-uploader/faq-8-svg2.svg" alt="toggler">
+                        <img class="transform dark:block hidden " src="https://tuk-cdn.s3.amazonaws.com/can-uploader/faq-8-svg2dark.svg" alt="toggler">
+                    </button>
+                </div>
+                <div id="menu" class="hidden mt-4 p-4 bg-gray-100 rounded-lg">
+                    <p class="text-base leading-6 text-gray-600 dark:text-gray-300 font-normal">不行。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    let elements = document.querySelectorAll("[data-menu]");
+    for (let i = 0; i < elements.length; i++) {
+        let main = elements[i];
+    
+        main.addEventListener("click", function () {
+            let element = main.parentElement;
+            let indicators = main.querySelectorAll("img");
+            let child = element.querySelector("#menu");
+            let h = main.querySelector("p");
+    
+            h.classList.toggle("font-semibold");
+            child.classList.toggle("hidden");
+            indicators[0].classList.toggle("rotate-180");
+        });
+    
+        // Also allow the main heading div to be clicked
+        main.parentElement.addEventListener("click", function (event) {
+            if (event.target !== main) {
+                main.click();
+            }
+        });
+    }
+    </script>
+    
 {% endblock %}
