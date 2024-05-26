@@ -1,7 +1,8 @@
-.draggable--is-dragging {
-    border: solid gray;
+ul li {
+    transition: transform 0.15s ease, opacity 0.15s ease; 
 }
 
-.draggable--is-over {
-    background-color: #f0f0f0;
-}
+/* .draggable--is-dragging {
+    opacity: 0.6; 
+    transform: scale(1.05); 
+} */
