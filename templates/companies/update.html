@@ -48,13 +48,15 @@
                     <label for="file_upload_banner" class="block mb-2 text-sm font-bold text-gray-700">
                         上傳圖片：
                     </label>
-                    <input type="file" name="banner" id="file_upload" class="file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+                    <input type="file" name="banner" id="file_upload_banner" class="file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" onchange="previewImage(event, 'banner_preview')"/>
+                    <img id="banner_preview" src="#" alt="圖片預覽" style="display: none; width: 320px; height: 50px;"/>
                 </div>
                 <div class="mb-4">
                     <label for="file_upload_logo" class="block mb-2 text-sm font-bold text-gray-700">
                         上傳logo：
                     </label>
-                    <input type="file" name="logo" id="file_upload" class="file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+                    <input type="file" name="logo" id="file_upload_logo" class="file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" onchange="previewImage(event, 'logo_preview')"/>
+                    <img id="logo_preview" src="#" alt="logo預覽" style="display: none; width: 180px; height: 180px;"/>
                 </div>
                 <div class="flex justify-end px-1">
                     <button type="submit" class="px-4 py-2 text-violet-700 bg-white border border-violet-700 rounded button hover:bg-violet-700 hover:text-white">更新</button>
@@ -63,4 +65,15 @@
         </div>
     </div>
 </div>
+<script>
+    function previewImage(event, previewId) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById(previewId);
+            output.src = reader.result;
+            output.style.display = 'block';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 {% endblock %}
