@@ -39,8 +39,10 @@
             <div class="hidden md:flex">
                 <div>
                     {% if request.user.user_type == 2 %}
-                    <button class="px-2 py-1 text-sm text-blue-800 border border-blue-800 rounded-lg hover:bg-blue-200 me-2">刊登職缺
-                    </button>
+                    <a href="{% url 'companies:jobs' user.company.id %}"><button class="px-2 py-1 text-sm text-blue-800 border border-blue-800 rounded-lg hover:bg-blue-200 me-2">刊登職缺
+                    </button></a>
+                    <a href="{% url 'companies:applications' user.company.id %}"><button class="px-2 py-1 text-sm text-blue-800 border border-blue-800 rounded-lg hover:bg-blue-200 me-2">查看應徵
+                    </button></a>
                     {% endif %}
                 </div>
                 <div>
