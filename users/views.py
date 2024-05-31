@@ -1,37 +1,33 @@
-from django.contrib import messages
-from django.contrib.auth import logout, login, authenticate
-from .forms import CustomLoginForm
-from django.urls import reverse_lazy, reverse
-from django.conf import settings
-from django.utils import timezone
-from django.shortcuts import redirect,get_object_or_404,render
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.views import View
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.views.generic import TemplateView
-from django.views.generic.edit import FormView, UpdateView, CreateView
-from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
-from .forms import UserRegisterForm, UserUpdateForm
-from .models import CustomUser
-from resumes.models import Resume 
 from companies.models import Company
 from companies.forms import CompanyUpdateForm
-
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.urls import reverse_lazy, reverse
+from django.utils import timezone
+from django.utils.decorators import method_decorator
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import redirect,get_object_or_404,render
+from django.views import View
+from django.views.generic import TemplateView
+from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.template.loader import render_to_string
 from jobs.models import Job, User_Job, Job_Resume
 from mailchimp3 import MailChimp
-from django.http import HttpResponseRedirect
-
-from django.http import HttpResponse
-from django.template.loader import render_to_string
+from resumes.models import Resume 
+from .forms import UserRegisterForm, UserUpdateForm, CustomLoginForm
+from .models import CustomUser
 
 
 class UserRegisterView(FormView):
     template_name = "users/register.html"
     form_class = UserRegisterForm
-    success_url = reverse_lazy("users:login")
+    success_url = reverse_lazy("users:home")
 
     def form_valid(self, form):
         user = form.save()
