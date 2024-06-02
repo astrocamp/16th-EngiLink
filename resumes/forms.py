@@ -3,7 +3,7 @@ from .models import Resume
 from datetime import date, datetime
 import re
 from django.core.exceptions import ValidationError
-from markdownx.fields import MarkdownxFormField
+
 
 
 class EmailValidator(forms.EmailField):
@@ -27,7 +27,10 @@ class ResumeForm(forms.ModelForm):
 
     email = EmailValidator()
 
-    skills = MarkdownxFormField()
+    forms.CharField(
+        label="技能",
+        widget=forms.Textarea(),
+    )
 
     birthday = forms.DateTimeField(
         widget=forms.DateInput(attrs={"type": "date"}), required=False
