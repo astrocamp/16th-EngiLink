@@ -1,7 +1,6 @@
 {% extends "frontend.html" %}
 {% load static %}
 {% block content %}
-{% if not user.is_authenticated %}
     <div class="flex justify-center items-center h-screen">
         <div class="flex flex-col justify-center items-center">
             <img src="{% static 'img/logo.png' %}" class="w-40 mb-4 mr-2">
@@ -19,13 +18,4 @@
             <img src="{% static 'img/engilink.png' %}" class="w-full lg:max-w-lg">
         </div>
     </div>
-{% else %}
-    <input type="hidden" value="{{ request.user.user_type }}">
-    {% if request.user.user_type == 2 %}
-        <input type="hidden" value="{% url 'companies:home'  %}">
-    {% else %}
-        <input type="hidden" value="{% url 'users:home' %}">
-    {% endif %}
-    <script src="{% static 'js/home.js' %}"></script>
-{% endif %}
 {% endblock %}

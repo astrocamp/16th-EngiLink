@@ -5,9 +5,6 @@
             <h1 class="px-2 py-2 bg-blue-500">職缺列表</h1>
             <div class="flex justify-center mt-1 space-x-2">
                 <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-                    <a href="{% url 'companies:home' %}">會員系統</a>
-                </button>
-                <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
                     <a href="{% url 'companies:jobs_create' user.company.id %}">刊登職缺</a>
                 </button>
             </div>

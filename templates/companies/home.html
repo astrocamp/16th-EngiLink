@@ -1,7 +1,0 @@
-{% extends 'backend.html' %}
-{% block content %}
-{% if user.is_authenticated %}
-    <p>歡迎，{{request.user}}!</p>
-    <p>為您的職缺推薦最佳人選！</p>
-{% endif %} 
-{% endblock %}

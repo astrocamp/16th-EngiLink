@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import ListView
 from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.detail import DetailView
 from .models import Company, User_Company
@@ -50,12 +50,7 @@ class CompanyRegisterView(FormView):
         if user.user_type == 2 and company is None:
             return reverse_lazy('users:create', kwargs={'pk': user.pk})
         else:
-            return reverse_lazy('companies:home')
-
-
-class CompanyHomeView(PermissionRequiredMixin,TemplateView):
-    template_name = 'companies/home.html'
-    permission_required = "company_can_show"
+            return reverse_lazy('companies:applications', kwargs={'pk': user.pk})
 
 
 class CompanyLoginView(LoginView):
@@ -77,7 +72,7 @@ class CompanyLoginView(LoginView):
             return reverse_lazy('users:login')
         
         else:
-            return reverse_lazy('companies:home')
+            return reverse_lazy('companies:applications', kwargs={'pk': user.pk})
 
 
 class CompanyLogoutView(PermissionRequiredMixin,LogoutView):

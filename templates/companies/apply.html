@@ -1,6 +1,9 @@
 {% extends 'backend.html' %}
 {% block content %}
-<br>
+{% if user.is_authenticated %}
+    <p>歡迎，{{request.user}}!</p>
+    <p>為您的職缺推薦最佳人選！</p>
+{% endif %} 
 {% for job, resumes in job_resume_dict.items %}
     <div class="bg-white p-6 shadow-lg rounded-lg mb-6 mx-auto max-w-7xl">
         <h2 class="text-3xl font-semibold mb-4">{{ job.company.company_name }} {{ job.title }}</h2>

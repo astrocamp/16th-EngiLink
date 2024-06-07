@@ -5,7 +5,7 @@
         <div class="flex items-center justify-between h-16  mx-auto md:flex md:justify-between md:items-center">
             <div class="items-center flex-shrink-0">
                 {% if request.user.user_type == 2 %}
-                    <a href="{% url 'companies:home' %}">
+                    <a href="{% url 'companies:applications' pk=request.user.pk %}">
                 {% else %}
                     <a href="{% url 'users:home' %}">
                 {% endif %}
