@@ -190,9 +190,9 @@ class CompanyListView(ListView):
             favorite_company_ids = User_Company.objects.filter(
                 user=self.request.user, collect=True
             ).values_list("company_id", flat=True)
-            context["favorite_company_ids"] = favorite_company_ids
+            context["user_companies"] = favorite_company_ids
         else:
-            context["favorite_company_ids"] = []
+            context["user_companies"] = []
         return context
     
     def render_to_response(self, context, **response_kwargs):
@@ -331,6 +331,8 @@ class CompanyInterviewsCalendarView(View):
         return render(request, "companies/calendar.html", context)
 
 class FavoriteCompanyView(LoginRequiredMixin, View):
+    print(';-----' * 10)
+    
     def post(self, request, *args, **kwargs):
         company = get_object_or_404(Company, id=self.kwargs["company_id"])
         user_company, created = User_Company.objects.get_or_create(
@@ -340,6 +342,7 @@ class FavoriteCompanyView(LoginRequiredMixin, View):
         user_company.save()
 
         if "HX-Request" in request.headers:
+            print(company)
             user_companies = User_Company.objects.filter(
                 user=request.user, collect=True
             ).values_list("company_id", flat=True)
